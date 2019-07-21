@@ -7,7 +7,9 @@
           <content-input @createNewItem="createItem"></content-input>
           <ul v-if="(items.length !== 0)" :class="['items-list']">
             <content-list v-for="item in filters" :item="item" :key="item.createDate"
-                       @completeItem="completeItem">
+                       @completeItem="completeItem"
+                       @deleteItem="deleteItem"
+                       @editItem="editItem">
             </content-list>
           </ul>
         </div>
@@ -46,6 +48,12 @@
       },
       completeItem(item){
         item.isFinished = !item.isFinished
+      },
+      deleteItem(item){
+        this.items.splice(this.items.indexOf(item), 1)
+      },
+      editItem(item){
+        item.item.content = item.newLabel
       }
     },
     watch: {
