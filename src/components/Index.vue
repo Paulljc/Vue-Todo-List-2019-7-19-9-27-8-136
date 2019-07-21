@@ -12,6 +12,9 @@
                        @editItem="editItem">
             </content-list>
           </ul>
+          <content-filter v-if="(items.length !== 0)" :status="status" 
+            @category="changeCategory">
+          </content-filter>
         </div>
       </div>
     </div>
@@ -21,6 +24,7 @@
 <script>
   import ContentInput from './ContentInput.vue'
   import ContentList from './ContentList.vue'
+  import ContentFilter from './ContentFilter.vue'
 
   import Filters from '../utils/filter.js'
   import Store from '../utils/store.js'
@@ -28,7 +32,8 @@
   export default{
     components: {
       ContentInput,
-      ContentList
+      ContentList,
+      ContentFilter
     },
     created(){
       this.items = Store.fetchItems() || [];
@@ -54,6 +59,9 @@
       },
       editItem(item){
         item.item.content = item.newLabel
+      },
+      changeCategory(prop){
+        this.status = prop
       }
     },
     watch: {
