@@ -1,6 +1,6 @@
 <template>
   <div :class="['input-layout']">
-    <input id="content-input" v-model="content" @keyup.enter="createNewItem" type="text" maxlength="30"/>
+    <input id="content-input" v-model="content" @keyup.enter="createNewItem" type="text" placeholder="Input your plans!" maxlength="30"/>
   </div>
 </template>
 
