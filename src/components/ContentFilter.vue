@@ -33,13 +33,14 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .category-layout {
-    width 100%
+    // width 100%
     height 50px
     background white
     border-top 1px solid #ededed
     padding 10px 15px
     font-weight 200
     font-size 20px
+    box-sizing border-box
     font-family 'Avenir', Helvetica, Arial, sans-serif;
     .things-edit {
       float right

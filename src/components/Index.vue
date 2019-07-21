@@ -82,7 +82,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .outer-layer {
-    padding 60px 0 0
+    padding 40px 0 0
     @media screen and (max-width 767px) {
       padding 50px 0 10px
     }

@@ -51,7 +51,7 @@
     color #2c3e50
     width 100%
     padding 15px 0
-    min-height 64px
+    // min-height 64px
     border-style solid
     border-width 0
     background white
@@ -103,7 +103,7 @@
       font-size 24px
       line-height 34px
       vertical-align middle
-      width 100%
+      width 83.5%
       font-weight 400
       font-family 'Avenir', Helvetica, Arial, sans-serif;
       @media screen and (max-width 767px) {

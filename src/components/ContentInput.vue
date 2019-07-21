@@ -43,7 +43,7 @@
     }
     #content-input {
       color #2c3e50
-      width 100%
+      // width 100%
       border none
       height 64px
       padding 18px 10px 18px 55px
