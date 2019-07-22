@@ -45,17 +45,17 @@
         editing: false,
         statusFilter: {
           all(items){
-            return this.active(items).concat(this.completed(items))
+            return items
           },
           completed(items){
             return items.filter(function (item) {
               return item.isCompleted
-            }).reverse()
+            })
           },
           active(items){
             return items.filter(function (item) {
               return !item.isCompleted
-            }).reverse()
+            })
           }
         }
       }
