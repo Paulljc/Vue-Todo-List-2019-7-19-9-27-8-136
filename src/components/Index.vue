@@ -6,7 +6,7 @@
         <div class="inner-content">
           <content-input @createNewItem="createItem"></content-input>
           <ul v-if="(items.length !== 0)" :class="['items-list']">
-            <content-list v-for="item in filters" :item="item" :key="item.createDate"
+            <content-list v-for="item in itemFilters" :item="item" :key="item.id"
                        @completeItem="completeItem"
                        @deleteItem="deleteItem"
                        @editItem="editItem">
@@ -26,7 +26,6 @@
   import ContentList from './ContentList.vue'
   import ContentFilter from './ContentFilter.vue'
 
-  import Filters from '../utils/filter.js'
   import Store from '../utils/store.js'
 
   export default{
@@ -43,7 +42,22 @@
         title: 'Simple Todo List with adding and filter by diff status.',
         items: [],
         status: 'all',
-        editing: false
+        editing: false,
+        statusFilter: {
+          all(items){
+            return this.active(items).concat(this.completed(items))
+          },
+          completed(items){
+            return items.filter(function (item) {
+              return item.isCompleted
+            }).reverse()
+          },
+          active(items){
+            return items.filter(function (item) {
+              return !item.isCompleted
+            }).reverse()
+          }
+        }
       }
     },
     methods: {
@@ -52,7 +66,7 @@
         (this.status === 'all' || this.status === 'active') ? void(0) : this.status = 'all';
       },
       completeItem(item){
-        item.isFinished = !item.isFinished
+        item.isCompleted = !item.isCompleted
       },
       deleteItem(item){
         this.items.splice(this.items.indexOf(item), 1)
@@ -73,8 +87,8 @@
       }
     },
     computed: {
-      filters(){
-        return Filters[this.status](this.items)
+      itemFilters(){
+        return this.statusFilter[this.status](this.items)
       }
     }
   }

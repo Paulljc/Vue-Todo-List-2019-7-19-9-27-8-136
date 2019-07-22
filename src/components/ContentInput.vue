@@ -18,9 +18,8 @@
         if (content === '') return;
         this.newItem = {
           content: content,
-          isFinished: false,
-          createDate: new Date().getTime(),
-          finishedDate: null
+          isCompleted: false,
+          id: new Date().getTime(),
         };
         this.$emit('createNewItem', this.newItem);
         this.content = '';

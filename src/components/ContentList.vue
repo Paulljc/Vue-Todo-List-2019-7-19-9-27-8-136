@@ -1,11 +1,11 @@
 <template>
-  <li :class="['todo-list', {finished: item.isFinished}]">
-    <input v-show="!editing" class="content-checkbox" type="checkbox" :checked="item.isFinished"
+  <li :class="['todo-list', {completed: item.isCompleted}]">
+    <input v-show="!editing" class="content-checkbox" type="checkbox" :checked="item.isCompleted"
            @click="completeItem">
-      <label v-show="!editing" :class="['item-content']" @dblclick="editItem">
-        {{item.content}}
-      </label>
-    <input v-show="editing" class="content-edit" v-model="content" @blur="completeEdit"
+    <label v-show="!editing" :class="['item-content']" @dblclick="editItem">
+      {{item.content}}
+    </label>
+    <input v-if="editing" class="content-edit" v-model="content" @blur="completeEdit"
            @keyup.enter="completeEdit" @keyup.esc="cancelEdit" />
     <button v-show="!editing" class="content-delete" @click="deleteItem"></button>
   </li>
@@ -149,7 +149,7 @@
         content: '×'
       }
     }
-    &.finished {
+    &.completed {
       .item-content {
         color: #bbb
         text-decoration:line-through
